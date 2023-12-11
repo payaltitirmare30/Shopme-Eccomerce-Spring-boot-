@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<head th:replace="~{fragments :: page_head('My Account', 'none')}" />
+
+<body>
+
+			
+			<div th:replace="~{navigation :: header_menu }"></div>
+		   <div th:replace="~{navigation :: search_nav }"></div>
+	
+		  <div th:replace="~{breadcrumb :: content }"></div>
+		
+		
+<!-- Start My Account  -->
+ <div class="container-fluid">
+    <div class="row my-2">
+       
+        <div class="col-lg-8 order-lg-2">
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h1><b>Your Profile</b></h1>
+                    <h2> <span style="font-size: medium;"></span></h2>
+                    <h4>Email : [[${customer.email}]] </h4>
+                     <h4>First Name : [[${customer.firstName}]]</h4>
+                      <h4>Last Name : [[${customer.lastName}]] </h4>
+                    <h4>Phone: [[${customer.phoneNumber}]] </h4>
+                   
+                </div>
+            </div>
+			</div>
+        </div>
+    </div>
+</th>
+
+<div class="my-account-box-main">
+    <div class="container">
+        <div class="my-account-page">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="account-box">
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <a th:href="@{/cart}"> <i class="fa-solid fa-gift fa-2xl"></i> </a>
+                            </div>
+                            <div class="service-desc">
+                                <h4>Your Orders</h4>
+                                <p>Track, return, or buy things again</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="account-box">
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <a th:href="@{/customer_account_update}"><i class="fa fa-lock fa-2xl"></i> </a>
+                            </div>
+                            <div class="service-desc">
+                                <h4>Login &amp; security</h4>
+                                <p>Edit login, name, and mobile number</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="account-box">
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <a th:href="@{/customer_account_update}"> <i class="fa fa-location-arrow fa-2xl"></i> </a>
+                            </div>
+                            <div class="service-desc">
+                                <h4>Your Addresses</h4>
+                                <p>Edit addresses for orders and gifts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End My Account -->
+<div th:replace="~{navigation :: footer_menu}"></div>
+<!-- End Feed  -->
+
+</body>
+
+</html>

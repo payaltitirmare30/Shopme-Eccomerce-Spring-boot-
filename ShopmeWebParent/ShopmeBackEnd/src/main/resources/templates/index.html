@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+ <!--xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"> -->
+		
+	<head th:replace="~{fragments :: page_head('Home - Shopme Admin', 'none') }"></head>
+	
+	<body>
+		
+		<div class="container-fluid">
+			<!--navbar-->
+		<div th:replace="~{navigation :: menu }"></div><!--code for navigation bar present in diffrent file -->
+		
+		<div>
+		   <h2>Shopme  Control panel </h2>
+		   welcome 
+		 <!--  <a class="nav-link dropdown-toggle" data-toggle="dropdown" 
+		    th:href="@{/account}" sec:authentication="principal.username"  ></a>
+		</div>  -->
+		
+		<!-- footer-->
+		<div th:replace=" ~{fragments :: footer}"> </div>
+		
+		</div>
+		
+		<!-- code for logout functionality-->
+		<script type="text/javascript">
+			
+		</script>
+				
+		
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="~{fragments :: page_head('Brands - Shopme Admin','none')}"></head>
+	
+	
+	<body>
+		
+		<div class="container-fluid">
+			
+			<div th:replace="~{navigation :: menu }"></div>
+			
+		<div>
+		   <h2>Manage Brands  </h2>
+		   <a th:href="@{/brands/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"></a>
+		</div>
+		<div  th:if="${message!=null}" class="alert alert-success  text-center ">
+			[[${message}]]
+		</div>
+		<div>
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+				   <tr>
+					   <th>Brand ID</th>
+					 <th>Logo</th>
+					 
+					 <th>Brand Name </th>
+					  <th>Categories</th>
+					   <th></th>
+				   </tr>
+				 </thead>
+				 
+				 <tbody>
+					 <tr th:each="brand : ${listBrands}">
+						 <td>[[${brand.id}]]</td>
+						 <td>
+							 <img th:src="@{${brand.LogoPath}}" style="width: 100px" class="img-fluid"/>
+							 </td>
+							 
+						 <td>[[${brand.name}]]</td>
+						 
+						 <td>
+							<th:block th:each="cat : ${brand.categories}">
+								<span class="badge badge-secondary" th:text="${cat.name}"></span>
+							</th:block>
+						 </td>
+						 
+						 
+						 <td>
+							 <a class="fa-solid fa-pen-to-square icon-green" th:href="@{'/brands/edit/' +${brand.id}}" title="Edit this brand"></a>
+							  &nbsp;
+							 <a class="fa-solid fa-trash icon-dark  link-delete" th:href="@{'/brands/delete/' +${brand.id}}"     
+							   th:entityId="${brand.id}"
+							  title="Delete this brand"></a>
+						 </td>
+					 </tr>
+				 </tbody>
+			</table>
+		</div>
+		
+	
+		<!--start modal dialogue -->
+		<div class="modal fade text-center" id="confirmModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" >Delete Confirmation</h4>	
+						<button type="button" class="close" data-dismiss="modal">&times;</button>					
+					</div>
+					<div class="modal-body">
+						<span id="confirmText">Are you sure you eant to delete this user ID </span>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-success" href="" id="yesButton">Yes</a>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >No</button>			
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end modal -->
+		
+		<div th:replace="~{fragments :: footer}"> </div>
+		
+		</div>
+		
+		<!--javascript code -->
+		<script th:src="@{/js/common_list.js}"></script>
+		<script type="text/javascript" >
+			moduleURL = "[[@{/brands}]]";
+			
+			$(document).ready(function () {
+			$(".link-delete").on("click", function (e) {
+				e.preventDefault();
+				showDeleteConfirmModal($(this), 'brand');
+			});
+		});
+		
+		</script>
+		
+	</body>
+</html>
